@@ -19,6 +19,11 @@ router.get('/newuser',function(req,res){
 	res.render('newuser',{ title:'Add New User'});
 })
 
+/* GET email Page*/
+router.get('/emailpage',function(req,res){
+	res.render('emailpage',{ title:'Email Pace'});
+})
+
 /* POST to Add User Service */
 router.post('/adduser', function(req,res){
 	//set our internal db variable
@@ -51,7 +56,7 @@ router.post('/adduser', function(req,res){
 });
 
 //delete guest book entry
-router.get('/:id', function(req,res){
+router.get('/:id/', function(req,res){
 	var id = req.params.id;
 	var objectId = new ObjectID(id);
 
@@ -71,7 +76,7 @@ router.get('/:id/usermessage', function(req,res){
 	var db = req.db;
 	var collection = db.get('usercollection');
 	console.log(collection);
-	collection.find({_id: objectId}, function(err, result){
+	collection.find({_id: objectId}, function(err, result) {
 
 		if(err){
 			res.send("there was an error");
